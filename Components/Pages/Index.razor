@@ -1,0 +1,215 @@
+@page "/"
+@attribute [Authorize]
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Notch News Widgets</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f2f2f2;
+            color: #333;
+        }
+        .widget-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .news-widget {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .news-widget.news-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+        }
+        .news-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .news-header {
+            background-color: #4844d4; /* Change this color to your desired color */
+            color: #fff;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-image {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .news-content {
+            overflow: hidden;
+        }
+        .news-title {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .news-description {
+            font-size: 14px;
+            color: #666;
+        }
+        .news-link {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .news-link:hover {
+            color: #6c757d;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="widget-container" id="news-widgets">
+    <div id="loading" style="display: block; text-align: left; padding: 20px;">
+        <p>Loading...</p>
+        <p>Please, reload the page if it's taking more than 5 seconds.</p>
+        <div style="display: flex; justify-content: center;">
+            <img id="loading-gif" src="https://media.giphy.com/media/KpACNEh8jXK2Q/giphy.gif" alt="Loading..." style="width: 400px; height: 300px; margin-bottom: 20px; display: none;">
+            
+        </div>
+    </div>
+    <script>
+        // Show the GIF after 2 seconds
+        setTimeout(function() {
+            document.getElementById('loading-gif').style.display = 'block';
+        }, 5000);
+    </script>
+    <!-- Widgets will be dynamically loaded here -->
+</div>
+
+<script>
+    const categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', 'general', 'politics'];
+    const primaryApiKey = 'ce55466b778e4164ba3071bcf6f48927'; // more backup: 75d4fb2d4abc4adbb6de5959c48f2dcc
+    const backupApiKey = 'bbc1811d3fb14e6aa1b9e2b297a1c498';
+
+    let fetchCounter = 0;
+    const totalFetches = categories.length;
+
+    categories.forEach(category => {
+        fetchNews(category);
+    });
+
+    function fetchNews(category) {
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${primaryApiKey}&category=${category}&pageSize=4`;
+        
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                createWidget(category, data.articles);
+                fetchCounter++;
+                checkAllWidgetsLoaded();
+            })
+            .catch(error => {
+                console.error(`Error fetching the news for category ${category}:`, error);
+                // Try fetching with backup API key
+                fetchWithBackupApiKey(category);
+            });
+    }
+
+    function fetchWithBackupApiKey(category) {
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${backupApiKey}&category=${category}&pageSize=4`;
+        
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                createWidget(category, data.articles);
+                fetchCounter++;
+                checkAllWidgetsLoaded();
+            })
+            .catch(error => {
+                console.error(`Error fetching the news for category ${category} with backup API key:`, error);
+                fetchCounter++;
+                checkAllWidgetsLoaded();
+            });
+    }
+
+    function checkAllWidgetsLoaded() {
+        if (fetchCounter === totalFetches) {
+            // Hide loading indicator once all widgets are loaded
+            document.getElementById('loading').style.display = 'none';
+        }
+    }
+
+    function createWidget(category, articles) {
+        const container = document.getElementById('news-widgets');
+        const widget = document.createElement('div');
+        widget.className = 'news-widget';
+        widget.innerHTML = `
+            <div class="news-header">${category.charAt(0).toUpperCase() + category.slice(1)} News</div>
+            <ul class="news-list">
+                ${articles
+                    .filter(article => article.urlToImage && article.title !== '[Removed]')
+                    .map(article => `
+                    <li class="news-item">
+                        <img class="news-image" src="${article.urlToImage}" alt="News Image" />
+                        <div class="news-content">
+                            <a href="${article.url}" target="_blank" class="news-link">
+                                <h3 class="news-title">${article.title}</h3>
+                                <p class="news-description">${article.description || 'No description available.'}</p>
+                            </a>
+                        </div>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        container.appendChild(widget);
+    }
+
+</script>
+
+</body>
+</html>

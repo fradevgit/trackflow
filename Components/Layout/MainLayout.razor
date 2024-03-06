@@ -1,0 +1,106 @@
+@inherits LayoutComponentBase
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+
+<RadzenComponents />
+
+<RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
+    <RadzenHeader>
+    <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+        <RadzenColumn Size="5" Style="width: 395px; text-align: center">
+            <div style="display: flex; align-items: center; width: 800px; text-align: left">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTCUSD:&nbsp;&nbsp;</span><RadzenButton Style="float: none">@btcUsdRate</RadzenButton>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ETHUSD:&nbsp;&nbsp;</span><RadzenButton>@ethUsdRate</RadzenButton>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTCUSD:&nbsp;&nbsp;</span><RadzenButton>@ltcUsdRate</RadzenButton>
+            </div>
+        </RadzenColumn>
+        <RadzenColumn Size="7">
+            <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End">
+                <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick">
+                    <ChildContent>
+
+
+                        <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" />
+                        @if (IsAdmin)
+                        {
+                       <RadzenProfileMenuItem Path="asp-net-users" Icon="person" Text="Users" />
+                        <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" />
+                        }
+                        <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new" />
+                    </ChildContent>
+                    <Template>
+                        @Security.User?.Name
+                        <RadzenGravatar Email="@Security.User?.Name" />
+                    </Template>
+                </RadzenProfileMenu>
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenHeader>
+
+    <RadzenBody Expanded="@sidebarExpanded">
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+            @Body
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+    <RadzenSidebar Expanded="@sidebarExpanded" style="z-index: 2">
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
+            <RadzenImage Path="images/logo.png"  style="width: 48px; height: 48px;"></RadzenImage>
+            <RadzenText Text="TrackFlow" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color);" />
+        </RadzenStack>
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Path="" />
+            <RadzenPanelMenuItem Text="Dashboard" Path="dash-board" />
+
+
+
+
+            @if (IsAdmin)
+            {
+                <RadzenPanelMenuItem Text="Teams" Path="teams" />
+                <RadzenPanelMenuItem Text="Shifts" Path="shifts" />
+                <RadzenPanelMenuItem Text="ViolationTypes" Path="violation-types" />
+                 
+
+            }
+
+            @if (IsManager || IsAdmin)
+            {
+                <RadzenPanelMenuItem Text="Fines" Path="fines" />
+                <RadzenPanelMenuItem Text="ActivityRecords" Path="activity-records" />
+                <RadzenPanelMenuItem Text="AttendanceByDays" Path="attendance-by-days" />
+            }
+
+
+        </RadzenPanelMenu>
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+            <RadzenText Text="TrackFlow v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+            <RadzenText Text="Copyright Ⓒ 2024" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+        </RadzenStack>
+    </RadzenSidebar>
+</RadzenLayout>
+<style>
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the buttons */
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Ensure the container fills its parent */
+    height: 100%; /* Ensure the container fills its parent */
+}
+
+.nav-button {
+    flex: 1; /* Distribute available space evenly among buttons */
+    margin: 0; /* Remove any default margin */
+    height: 110%; /* Ensure each button fills the container vertically */
+    border-left: 1px solid #000000; /* Add a solid left border with your desired color */
+    border-right: 1px solid #000000; /* Add a solid right border with your desired color */
+    border-top: none; /* Remove top border */
+    border-bottom: none; /* Remove bottom border */
+    }
+
+    .verticalLine {
+  border-left: 2px solid #000;  /* Параметры линии */
+  height: 10px;  /* Ограничивается только размером родительского элемента */
+}
+</style>

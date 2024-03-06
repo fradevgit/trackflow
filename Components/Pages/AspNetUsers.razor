@@ -1,0 +1,47 @@
+@page "/asp-net-users"
+@attribute [Authorize(Roles="admin")]
+
+<PageTitle>AspNetUsers</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Users" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow>
+        <RadzenColumn SizeMD=12>
+            <RadzenDataGrid @ref="grid0" ColumnWidth="200px" AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+                Data="@aspNetUsers" TItem="TrackFlow.Models.dbforall.AspNetUser" RowSelect="@EditRow" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.AspNetUser" Property="Email" Title="Email">
+                        <EditTemplate Context="aspNetUser">
+                            <!-- Bind to the OnEmailChanged event to handle changes -->
+                            <RadzenTextBox @bind-Value="aspNetUser.Email" Change="@((string newValue) => OnEmailChanged(newValue))"></RadzenTextBox>
+                        </EditTemplate>
+                        <EditTemplate Context="aspNetUser">
+                            <!-- Bind to the OnUserNameChanged event to handle changes -->
+                            <RadzenTextBox @bind-Value="aspNetUser.UserName" Change="@((string newValue) => OnUserNameChanged(newValue))"></RadzenTextBox>
+                        </EditTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.AspNetUser" Property="Team.TeamName" Title="Team">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.AspNetUser" Property="UserName" Title="User Name">
+                    </RadzenDataGridColumn>
+                    
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.AspNetUser" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                        <Template Context="aspNetUser">
+                            <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                                Shade="Shade.Lighter" Variant="Variant.Flat"
+                                Click=@(args => GridDeleteButtonClick(args, aspNetUser)) @onclick:stopPropagation="true" />
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

@@ -1,0 +1,159 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TrackFlow
+build_property.RootNamespace = TrackFlow
+build_property.ProjectDir = /Users/hidden/Desktop/TrackFlow/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/hidden/Desktop/TrackFlow
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Layout/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTG9naW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/ActivityRecords.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BY3Rpdml0eVJlY29yZHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddActivityRecord.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRBY3Rpdml0eVJlY29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddApplicationRole.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRBcHBsaWNhdGlvblJvbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddAspNetUser.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRBc3BOZXRVc2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddFine.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRGaW5lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddShift.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRTaGlmdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddTeam.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRUZWFtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AddViolationType.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGRWaW9sYXRpb25UeXBlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/ApplicationRoles.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BcHBsaWNhdGlvblJvbGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/ApplicationUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BcHBsaWNhdGlvblVzZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AspNetUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Bc3BOZXRVc2Vycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/AttendanceByDays.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BdHRlbmRhbmNlQnlEYXlzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXNoYm9hcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditActivityRecord.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0QWN0aXZpdHlSZWNvcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditApplicationUser.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0QXBwbGljYXRpb25Vc2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditAspNetUser.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0QXNwTmV0VXNlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditFine.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0RmluZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditShift.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0U2hpZnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditTeam.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0VGVhbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/EditViolationType.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0VmlvbGF0aW9uVHlwZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Fines.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9GaW5lcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Qcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Shifts.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TaGlmdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Teams.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UZWFtcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/Unauthorized.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9VbmF1dGhvcml6ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/ViolationTypes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9WaW9sYXRpb25UeXBlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Pages/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9SZWRpcmVjdFRvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hidden/Desktop/TrackFlow/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 

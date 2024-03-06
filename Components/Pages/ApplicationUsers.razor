@@ -1,0 +1,32 @@
+@page "/application-users"
+@attribute [Authorize(Roles="admin")]
+
+<PageTitle>Users</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Users" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow>
+        <RadzenColumn SizeMD="12">
+            <RadzenAlert Size="AlertSize.Large" Shade="Shade.Light" AlertStyle="AlertStyle.Danger" Variant="Variant.Flat" Title="Cannot delete user" Visible="@errorVisible">@error</RadzenAlert>
+            <RadzenDataGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30}) AllowSorting="true" Data="@users"
+                TItem="TrackFlow.Models.ApplicationUser" RowSelect="@RowSelect">
+                <Columns>
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.ApplicationUser" Property="UserName" Title="User Name" />
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.ApplicationUser" Property="Team.TeamName" Title="Team Name" />
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.ApplicationUser" Property="Email" Title="Email" />
+                    
+                    <RadzenDataGridColumn TItem="TrackFlow.Models.ApplicationUser" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+                    
+                        <Template Context="user">
+                            <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
+                                Variant="Variant.Flat" Shade="Shade.Lighter" Click="@(() => DeleteClick(user))" @onclick:stopPropagation="true" />
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

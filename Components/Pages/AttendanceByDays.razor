@@ -1,0 +1,42 @@
+@page "/attendance-by-days"
+@using TrackFlow.Models.dbforall
+@using TrackFlow.Components.Pages
+@inject dbforallService dbforall
+@using System.Globalization
+@attribute [Authorize(Roles="manager,superadmin,admin")]
+
+
+<RadzenText Text="Attendance" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+
+<br>
+
+<div class="rz-p-12 rz-text-align-center" style="width: 490px; height: 161px">
+    <RadzenLabel Text="Select Year/Month" Component="DatePickerYearMonth" Style="margin-right: 8px; vertical-align: middle;" />
+    <RadzenDatePicker @bind-Value=@selectedDate ShowDays=false DateFormat="MMMM yyyy" CurrentDateChanged=@OnCurrentDateChanged Name="DatePickerYearMonth" AllowInput="false" />
+</div>
+
+<RadzenContentContainer>
+    <RadzenGrid TItem="UserAttendance" Data="@userAttendance" Style="width: 120%; padding-right: 10px;">
+        <Columns>
+            <RadzenGridColumn TItem="UserAttendance" Property="UserName" Title="User" Width="90px" />
+
+            @foreach (var day in daysInMonth)
+            {
+                <RadzenGridColumn TItem="UserAttendance" Title="@day.ToString("dd")">
+                    <Template Context="data">
+                        @{
+                            bool attendanceStatus = data.AttendanceStatus.TryGetValue(day, out var status) && status;
+                        }
+                        <div class="attendance-cell">
+                            <RadzenCheckBox TValue="bool" Value="@attendanceStatus" Enabled="false" Style="margin: 0; padding: 0;" Disabled="false" ReadOnly="true" />
+                        </div>
+                    </Template>
+                </RadzenGridColumn>
+            }
+        </Columns>
+    </RadzenGrid>
+</RadzenContentContainer>
+
+<br />
+
+<RadzenButton Text="Export to Excel" Click="@ExportToExcel" Style="margin-left: 10px;" />

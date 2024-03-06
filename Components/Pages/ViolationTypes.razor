@@ -1,0 +1,43 @@
+@page "/violation-types"
+@attribute [Authorize(Roles="admin")]
+
+<PageTitle>Violation Types</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Violation Types" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@violationTypes" TItem="TrackFlow.Models.dbforall.ViolationType" RowSelect="@EditRow" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" Density="Radzen.Density.Default">
+            <Columns>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ViolationType" Property="ViolationID" Title="ID" Width="70px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ViolationType" Property="ViolationName" Title="Violation Name">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ViolationType" Property="Amount" Title="Amount, $">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ViolationType" Property="Description" Title="Description">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ViolationType" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="violationType">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, violationType)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

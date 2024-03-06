@@ -1,0 +1,73 @@
+@page "/activity-records"
+@attribute [Authorize(Roles="admin,superadmin,manager")]
+
+<PageTitle>ActivityRecords</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Activity Records" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@activityRecords" TItem="TrackFlow.Models.dbforall.ActivityRecord" RowSelect="@EditRow" AllowColumnPicking="true" AllowColumnResize="true" AllowColumnReorder="true" Style="min-width: 200px">
+            <Columns>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="ActivityID" Title="ID" Width="100px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="AspNetUser.UserName" Title="UserName">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="ShiftStartTime" Title="Shift Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="ShiftEndTime" Title="Shift End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break1StartTime" Title="B1 Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break1EndTime" Title="B1 End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break2StartTime" Title="B2 Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break2EndTime" Title="B2 End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break3StartTime" Title="B3 Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break3EndTime" Title="B3 End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break4StartTime" Title="B4 Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="Break4EndTime" Title="B4 End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="LunchStartTime" Title="Lunch Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Property="LunchEndTime" Title="Lunch End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="TrackFlow.Models.dbforall.ActivityRecord" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="activityRecord">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, activityRecord)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+        <RadzenRow>
+            <RadzenColumn Size="12" Style="margin-top: 1rem">
+                <AuthorizeView Roles="superadmin">
+                    <Authorized>
+                        <RadzenButton Icon="delete" Text="Delete All Records" Click="@DeleteAllActivityRecords" Variant="Variant.Flat" ButtonStyle="ButtonStyle.Danger" />
+                    </Authorized>
+                </AuthorizeView>
+            </RadzenColumn>
+        </RadzenRow>
+
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>
